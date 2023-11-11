@@ -12,7 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class VisitDateTest {
 
-	Exception exception;
+	private Exception exception;
 
 	@DisplayName("방문 날짜 객체가 올바르게 생성되는지 테스트")
 	@ParameterizedTest

@@ -95,3 +95,5 @@
   - 정수 검증
 - `VisitDateTest`
   - 방문 날짜 예외 검증
+- `OrderTest`
+  - 주문 예외 검증
