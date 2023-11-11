@@ -112,3 +112,6 @@
   - 메인음식의 수량만큼 주말 할인금액 반환 검증
 - `SpecialDiscountTest`
   - 방문 날짜 특별할인 날짜인지 검증
+- `ChristmasDdayDiscountTest`
+  - 방문 날짜가 크리스마스 디데이 할인 날짜인지 검증
+  - 방문 날짜에 따라서 할인금액 반환 검증
