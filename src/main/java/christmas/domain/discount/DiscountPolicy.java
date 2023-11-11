@@ -1,10 +1,11 @@
 package christmas.domain.discount;
 
+import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
 
 public interface DiscountPolicy {
 
-	boolean isApplicable(int date);
+	boolean isApplicable(VisitDate visitDate);
 
-	int getDiscountAmount(Order order);
+	int getDiscountAmount(Order order, VisitDate visitDate);
 }
