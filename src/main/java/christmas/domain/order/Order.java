@@ -15,4 +15,16 @@ public class Order {
 		OrderParser orderParser = new OrderParser();
 		menus = orderParser.parseOrder(menuCategory, order);
 	}
+
+	public int getCountInCategory(Menu.Category category) {
+		int count = 0;
+
+		for (Map.Entry<Menu, Integer> menu : menus.entrySet()) {
+			if (menu.getKey().getCategory() == category) {
+				count += menu.getValue();
+			}
+		}
+
+		return count;
+	}
 }
