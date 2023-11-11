@@ -80,7 +80,7 @@
 - [ ] : 할인 기능 구현
   - [X] : DiscountPolicy 인터페이스 생성
   - [X] : WeekdayDiscount 구현
-  - [ ] : WeekendDisCount 구현
+  - [X] : WeekendDisCount 구현
   - [ ] : ChristmasDdayDisCount 구현
   - [ ] : SpecialDiscount 구현
 - [ ] : `Amount` 클래스 생성
