@@ -21,4 +21,9 @@ public enum Dessert implements Menu {
 	public int getPrice() {
 		return price;
 	}
+
+	@Override
+	public Category getCategory() {
+		return Category.DESSERT;
+	}
 }

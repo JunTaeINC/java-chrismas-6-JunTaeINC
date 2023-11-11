@@ -23,4 +23,9 @@ public enum MainDish implements Menu {
 	public int getPrice() {
 		return price;
 	}
+
+	@Override
+	public Category getCategory() {
+		return Category.MAIN_DISH;
+	}
 }

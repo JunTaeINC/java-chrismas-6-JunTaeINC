@@ -22,4 +22,9 @@ public enum Appetizer implements Menu {
 	public int getPrice() {
 		return price;
 	}
+
+	@Override
+	public Category getCategory() {
+		return Category.APPETIZER;
+	}
 }
