@@ -77,11 +77,11 @@
   - [X] : 🚨 메뉴는 한번에 20개 까지 가능
   - `[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.`
 
-- [ ] : 할인 기능 구현
+- [X] : 할인 기능 구현
   - [X] : DiscountPolicy 인터페이스 생성
   - [X] : WeekdayDiscount 구현
   - [X] : WeekendDisCount 구현
-  - [ ] : ChristmasDdayDisCount 구현
+  - [X] : ChristmasDdayDisCount 구현
   - [X] : SpecialDiscount 구현
 - [ ] : `Amount` 클래스 생성
 - [ ] : `DiscountAmount` 클래스 생성
