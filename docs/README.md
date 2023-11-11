@@ -66,8 +66,8 @@
   - `[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.`
 
 - [ ] : 메뉴 입력 받기
-  - [ ] : menu Enum 생성
-  - [ ] : `Menu` 클래스 생성
+  - [X] : menu Enum 생성
+  - [X] : `Menu` 인터페이스 생성
   - [ ] : `Order` 클래스 생성
   - [ ] : `Amount` 클래스 생성
   - [ ] : `DiscountAmount` 클래스 생성
