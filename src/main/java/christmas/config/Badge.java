@@ -1,6 +1,6 @@
 package christmas.config;
 
-public enum BadgeList {
+public enum Badge {
 	STAR(5_000, "별"),
 	TREE(10_000, "트리"),
 	SANTA(20_000, "산타");
@@ -8,7 +8,7 @@ public enum BadgeList {
 	private final int baseAmount;
 	private final String name;
 
-	BadgeList(int baseAmount, String name) {
+	Badge(int baseAmount, String name) {
 		this.baseAmount = baseAmount;
 		this.name = name;
 	}

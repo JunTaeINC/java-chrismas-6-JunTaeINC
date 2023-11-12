@@ -1,9 +1,9 @@
-package christmas.domain.discount;
+package christmas.domain.event.discount;
 
-import christmas.domain.discount.list.ChristmasDdayDiscount;
-import christmas.domain.discount.list.SpecialDiscount;
-import christmas.domain.discount.list.WeekdayDiscount;
-import christmas.domain.discount.list.WeekendDiscount;
+import christmas.domain.event.discount.list.ChristmasDdayDiscount;
+import christmas.domain.event.discount.list.SpecialDiscount;
+import christmas.domain.event.discount.list.WeekdayDiscount;
+import christmas.domain.event.discount.list.WeekendDiscount;
 import java.util.Arrays;
 import java.util.List;
 

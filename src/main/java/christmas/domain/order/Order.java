@@ -2,8 +2,8 @@ package christmas.domain.order;
 
 import christmas.config.menu.Menu;
 import christmas.domain.MenuCategory;
-import christmas.domain.PresentEvent;
 import christmas.domain.amount.TotalOrderAmount;
+import christmas.domain.event.PresentEvent;
 import java.util.Map;
 
 public class Order {

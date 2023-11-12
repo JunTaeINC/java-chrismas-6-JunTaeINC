@@ -1,10 +1,10 @@
-package christmas.domain.discount.list;
+package christmas.domain.event.discount.list;
 
 import static christmas.domain.constant.DiscountConstant.WEEKDAY_DISCOUNT_PRICE;
 
 import christmas.config.menu.Menu.Category;
 import christmas.domain.VisitDate;
-import christmas.domain.discount.DiscountPolicy;
+import christmas.domain.event.discount.DiscountPolicy;
 import christmas.domain.order.Order;
 
 public class WeekdayDiscount implements DiscountPolicy {

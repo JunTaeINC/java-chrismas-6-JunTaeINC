@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.event;
 
 import christmas.config.Present;
 import christmas.config.message.ResultMessage;
