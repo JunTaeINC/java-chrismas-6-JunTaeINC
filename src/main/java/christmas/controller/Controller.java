@@ -10,18 +10,19 @@ public class Controller {
 
 	private VisitDate visitDate;
 	private Order order;
+	private final OutputView outputView = new OutputView();
 
 	public void run() {
 		askVisitDate();
 
 		askOrderMenu();
 
-		showBenefit();
+		showPreviewBenefit();
 	}
 
 
 	private void askVisitDate() {
-		OutputView.askVisitDate();
+		outputView.askVisitDate();
 
 		String userInput = InputView.getUserInput();
 
@@ -29,16 +30,15 @@ public class Controller {
 	}
 
 	private void askOrderMenu() {
-		OutputView.askOrderMenu();
+		outputView.askOrderMenu();
 
 		String userInput = InputView.getUserInput();
 
 		order = new Order(new MenuCategory(), userInput);
 	}
 
-	private void showBenefit() {
-		OutputView.showBenefit();
-
-		OutputView.showOrderMenu(order);
+	private void showPreviewBenefit() {
+		outputView.showBenefit();
+		outputView.showPreviewBenefit(order);
 	}
 }

@@ -9,6 +9,7 @@ public enum ResultMessage {
 	ESTIMATED_PAYMENT_AFTER_DISCOUNT("<할인 후 예상 결제 금액>"),
 	DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
 	NONE("없음"),
+	MONETARY_UNIT("원"),
 	ORDER_MENU_FORMAT("%s %d개");
 
 	private final String message;
