@@ -17,4 +17,8 @@ public class TotalOrderAmount implements Amount {
 	public int getAmount() {
 		return totalOrderAmount;
 	}
+
+	public boolean isPresentAvailable(int baseAmount) {
+		return totalOrderAmount >= baseAmount;
+	}
 }

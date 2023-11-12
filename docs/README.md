@@ -88,9 +88,7 @@
   - [X] : TotalOrderAmount 클래스 생성
   - [ ] : DiscountAmount 클래스 생성
   - [ ] : FinalPaymentAmount 클래스 생성
-- [ ] : `DiscountAmount` 클래스 생성
-- [ ] : `GiftEvent` 클래스 생성
-  - 주문금액 10,000 이상 가능
+- [X] : `PresentEvent` 클래스 생성
 - [X] : `Badge` 클래스 생성
   - 5천 원 이상: 별
   - 1만 원 이상: 트리

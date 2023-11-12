@@ -2,7 +2,7 @@ package christmas.domain.amount;
 
 public class DiscountAmount {
 
-	private int discountAmount;
+	private final int discountAmount;
 
 	public DiscountAmount(int discountAmount) {
 		this.discountAmount = discountAmount;
