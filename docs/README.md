@@ -121,3 +121,5 @@
   - 할인 금액에 따른 뱃지 반환 검증
 - `TotalOrderAmountTest`
   - 총 주문금액 반환 검증
+- `PresentEventTest`
+  - 총 주문금액 기준 증정품 증정 검증
