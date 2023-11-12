@@ -38,5 +38,7 @@ public class Controller {
 
 	private void showBenefit() {
 		OutputView.showBenefit();
+
+		OutputView.showOrderMenu(order);
 	}
 }

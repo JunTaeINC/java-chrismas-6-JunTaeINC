@@ -8,7 +8,8 @@ public enum ResultMessage {
 	TOTAL_BENEFIT_AMOUNT("<총혜택 금액>"),
 	ESTIMATED_PAYMENT_AFTER_DISCOUNT("<할인 후 예상 결제 금액>"),
 	DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
-	NONE("없음");
+	NONE("없음"),
+	ORDER_MENU_FORMAT("%s %d개");
 
 	private final String message;
 
