@@ -83,6 +83,7 @@
   - [X] : WeekendDisCount 구현
   - [X] : ChristmasDdayDisCount 구현
   - [X] : SpecialDiscount 구현
+  - [X] : DiscountService / DiscountConfig 구현
 - [ ] : `Amount` 클래스 생성
 - [ ] : `DiscountAmount` 클래스 생성
 - [ ] : `GiftEvent` 클래스 생성
