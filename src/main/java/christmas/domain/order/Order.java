@@ -42,4 +42,8 @@ public class Order {
 	public PresentEvent getPresentEvent() {
 		return presentEvent;
 	}
+
+	public Map<Menu, Integer> getMenus() {
+		return menus;
+	}
 }
