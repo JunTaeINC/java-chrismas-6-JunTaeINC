@@ -9,15 +9,18 @@ import java.util.List;
 
 public class DiscountConfig {
 
-	public DiscountService getDiscountService() {
+	private final List<DiscountPolicy> discountPolicies;
+
+	public DiscountConfig() {
 		DiscountPolicy christmasDdayDiscount = new ChristmasDdayDiscount();
 		DiscountPolicy specialDiscount = new SpecialDiscount();
 		DiscountPolicy weekdayDiscount = new WeekdayDiscount();
 		DiscountPolicy weekendDiscount = new WeekendDiscount();
 
-		List<DiscountPolicy> discountPolicies = Arrays.asList
-			(christmasDdayDiscount, specialDiscount, weekdayDiscount, weekendDiscount);
+		discountPolicies = Arrays.asList(christmasDdayDiscount, specialDiscount, weekdayDiscount, weekendDiscount);
+	}
 
-		return new DiscountService(discountPolicies);
+	public List<DiscountPolicy> getDiscountPolicies() {
+		return discountPolicies;
 	}
 }

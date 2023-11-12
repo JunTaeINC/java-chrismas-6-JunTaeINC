@@ -3,18 +3,17 @@ package christmas.domain.event.discount;
 import christmas.domain.VisitDate;
 import christmas.domain.amount.DiscountAmount;
 import christmas.domain.order.Order;
-import java.util.List;
 
 public class DiscountService {
 
-	private final List<DiscountPolicy> discountPolicies;
+	private final DiscountConfig discountConfig;
 
-	public DiscountService(List<DiscountPolicy> discountPolicies) {
-		this.discountPolicies = discountPolicies;
+	public DiscountService(DiscountConfig discountConfig) {
+		this.discountConfig = discountConfig;
 	}
 
 	public DiscountAmount getTotalDiscountAmount(Order order, VisitDate visitDate) {
-		int totalDiscountAmount = discountPolicies.stream()
+		int totalDiscountAmount = discountConfig.getDiscountPolicies().stream()
 			.filter(policy -> policy.isApplicable(visitDate))
 			.mapToInt(policy -> policy.getDiscountAmount(order, visitDate))
 			.sum();
