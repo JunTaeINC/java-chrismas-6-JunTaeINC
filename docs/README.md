@@ -79,12 +79,15 @@
 
 - [X] : 할인 기능 구현
   - [X] : DiscountPolicy 인터페이스 생성
-  - [X] : WeekdayDiscount 구현
-  - [X] : WeekendDisCount 구현
-  - [X] : ChristmasDdayDisCount 구현
-  - [X] : SpecialDiscount 구현
-  - [X] : DiscountService / DiscountConfig 구현
-- [ ] : `Amount` 클래스 생성
+  - [X] : WeekdayDiscount 클래스 생성
+  - [X] : WeekendDisCount 클래스 생성
+  - [X] : ChristmasDdayDisCount 클래스 생성
+  - [X] : SpecialDiscount 클래스 생성
+  - [X] : DiscountService / DiscountConfig 클래스 생성
+- [X] : `Amount` 인터페이스 생성
+  - [X] : TotalOrderAmount 클래스 생성
+  - [ ] : DiscountAmount 클래스 생성
+  - [ ] : FinalPaymentAmount 클래스 생성
 - [ ] : `DiscountAmount` 클래스 생성
 - [ ] : `GiftEvent` 클래스 생성
   - 주문금액 10,000 이상 가능

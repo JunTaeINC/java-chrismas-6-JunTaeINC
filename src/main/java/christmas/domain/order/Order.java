@@ -2,11 +2,13 @@ package christmas.domain.order;
 
 import christmas.config.menu.Menu;
 import christmas.domain.MenuCategory;
+import christmas.domain.amount.TotalOrderAmount;
 import java.util.Map;
 
 public class Order {
 
 	private Map<Menu, Integer> menus;
+	private TotalOrderAmount totalOrderAmount;
 
 	public Order(MenuCategory menuCategory, String order) {
 		OrderValidator validator = new OrderValidator();
@@ -14,6 +16,7 @@ public class Order {
 
 		OrderParser orderParser = new OrderParser();
 		menus = orderParser.parseOrder(menuCategory, order);
+		totalOrderAmount = new TotalOrderAmount(menus);
 	}
 
 	public int getCountInCategory(Menu.Category category) {
@@ -26,5 +29,9 @@ public class Order {
 		}
 
 		return count;
+	}
+
+	public int getTotalOrderAmount() {
+		return totalOrderAmount.getAmount();
 	}
 }
