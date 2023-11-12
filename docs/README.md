@@ -121,3 +121,5 @@
   - 방문 날짜에 따라서 할인금액 반환 검증
 - `BadgeTest`
   - 할인 금액에 따른 뱃지 반환 검증
+- `TotalOrderAmountTest`
+  - 총 주문금액 반환 검증
