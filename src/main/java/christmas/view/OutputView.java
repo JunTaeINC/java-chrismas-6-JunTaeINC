@@ -15,6 +15,7 @@ import static christmas.config.message.ResultMessage.TOTAL_ORDER_AMOUNT_BEFORE_D
 import christmas.config.menu.Menu;
 import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
+import christmas.domain.event.BadgeEvent;
 import christmas.domain.event.PresentEvent;
 import christmas.domain.event.discount.DiscountConfig;
 import christmas.domain.event.discount.DiscountService;
@@ -46,6 +47,7 @@ public class OutputView {
 		showBenefitList(order, visitDate);
 		showTotalBenefitAmount(order, visitDate);
 		showPaymentAmount(order, visitDate);
+		showBadge(order, visitDate);
 	}
 
 	private void showOrderMenu(Order order) {
@@ -104,6 +106,15 @@ public class OutputView {
 		int discountAmount = discountService.getTotalDiscountAmount(order, visitDate).getAmount();
 
 		System.out.println(ResultMessage.ESTIMATED_PAYMENT_AFTER_DISCOUNT.getMessage()
-			+ NEW_LINE + NumberFormatter.getNumberFormat(totalOrderAmount - discountAmount) + MONETARY_UNIT.getMessage());
+			+ NEW_LINE + NumberFormatter.getNumberFormat(totalOrderAmount - discountAmount) + MONETARY_UNIT.getMessage() + NEW_LINE);
+	}
+
+	private void showBadge(Order order, VisitDate visitDate) {
+		DiscountService discountService = new DiscountService(new DiscountConfig());
+
+		BadgeEvent badge = new BadgeEvent(discountService.getTotalDiscountAmount(order, visitDate).getAmount()
+			+ order.getTotalOrderAmount());
+
+		System.out.print(ResultMessage.DECEMBER_EVENT_BADGE.getMessage() + NEW_LINE + badge.getBadge());
 	}
 }
