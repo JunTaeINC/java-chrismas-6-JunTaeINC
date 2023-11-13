@@ -12,7 +12,8 @@ public class Order {
 	private final TotalOrderAmount totalOrderAmount;
 	private final PresentEvent presentEvent;
 
-	public Order(MenuCategory menuCategory, String order) {
+	public Order(String order) {
+		MenuCategory menuCategory = new MenuCategory();
 		OrderValidator validator = new OrderValidator();
 		validator.validateOrderFormat(menuCategory, order);
 

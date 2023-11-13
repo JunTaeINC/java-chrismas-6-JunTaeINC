@@ -28,6 +28,10 @@ public class OutputView {
 
 	private final String NEW_LINE = ResultMessage.NEW_LINE.getMessage();
 
+	public static void printExceptionMessage(String message) {
+		System.out.println(message);
+	}
+
 	public void askVisitDate() {
 		System.out.println(GREETING.getMessage());
 		System.out.println(ASK_VISIT_DATE.getMessage());

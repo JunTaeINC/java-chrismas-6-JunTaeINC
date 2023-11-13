@@ -3,7 +3,6 @@ package christmas.domain.event.discount.list;
 import static christmas.domain.constant.DiscountConstant.WEEKEND_DISCOUNT_PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.MenuCategory;
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
 import org.junit.jupiter.api.DisplayName;
@@ -32,7 +31,7 @@ class WeekendDiscountTest {
 	@Test
 	@DisplayName("방문날짜가 주말인 경우 메인음식의 갯수만큼 주말할인이 된다")
 	void getDiscountAmount_WhenMainDishInOrder() {
-		Order order = new Order(new MenuCategory(), "티본스테이크-4,제로콜라-1,레드와인-1");
+		Order order = new Order("티본스테이크-4,제로콜라-1,레드와인-1");
 
 		int discountAmount = weekendDiscount.getDiscountAmount(order, new VisitDate("1"));
 
@@ -42,7 +41,7 @@ class WeekendDiscountTest {
 	@Test
 	@DisplayName("방문날짜가 주말인 경우 메인음식의 갯수만큼 주말할인이 된다")
 	void getDiscountAmount_WhenNonMainDishInOrder() {
-		Order order = new Order(new MenuCategory(), "양송이수프-4,제로콜라-1,레드와인-1");
+		Order order = new Order("양송이수프-4,제로콜라-1,레드와인-1");
 
 		int discountAmount = weekendDiscount.getDiscountAmount(order, new VisitDate("1"));
 
