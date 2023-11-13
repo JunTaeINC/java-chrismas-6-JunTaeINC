@@ -112,7 +112,7 @@ public class OutputView {
 		DiscountService discountService = new DiscountService(new DiscountConfig());
 
 		BadgeEvent badge = new BadgeEvent(discountService.getTotalDiscountAmount(order, visitDate).getAmount()
-			+ order.getTotalOrderAmount());
+			+ order.getPresentEvent().getTotalBenefitAmount());
 
 		System.out.print(ResultMessage.DECEMBER_EVENT_BADGE.getMessage() + NEW_LINE + badge.getBadge());
 	}
