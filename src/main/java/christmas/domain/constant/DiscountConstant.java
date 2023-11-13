@@ -7,4 +7,6 @@ public class DiscountConstant {
 	public static final int SPECIAL_DISCOUNT_PRICE = 1_000;
 	public static final int CHRISTMAS_DISCOUNT_BASE_AMOUNT = 1_000;
 	public static final int CHRISTMAS_DISCOUNT_INCREASE_AMOUNT = 100;
+	public static final int MINIMUM_ORDER_AMOUNT = 10_000;
+	public static final int ZERO = 0;
 }

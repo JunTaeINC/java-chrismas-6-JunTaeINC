@@ -2,7 +2,7 @@ package christmas.domain.event.discount.list;
 
 import static christmas.domain.constant.DiscountConstant.WEEKEND_DISCOUNT_PRICE;
 
-import christmas.config.EventName;
+import christmas.config.Event;
 import christmas.config.menu.Menu.Category;
 import christmas.domain.VisitDate;
 import christmas.domain.event.discount.DiscountPolicy;
@@ -23,6 +23,6 @@ public class WeekendDiscount implements DiscountPolicy {
 
 	@Override
 	public String getEventName() {
-		return EventName.WEEKEND_DISCOUNT.getName();
+		return Event.WEEKEND_DISCOUNT.getName();
 	}
 }

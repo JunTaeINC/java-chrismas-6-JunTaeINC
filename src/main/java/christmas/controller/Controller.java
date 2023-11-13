@@ -46,7 +46,7 @@ public class Controller {
 		String input;
 
 		do {
-			input = InputView.getUserInput();
+			input = InputView.getUserInput().trim();
 			try {
 				constructor.apply(input);
 			} catch (IllegalArgumentException e) {

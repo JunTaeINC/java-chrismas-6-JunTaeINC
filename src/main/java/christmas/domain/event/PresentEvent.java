@@ -1,6 +1,6 @@
 package christmas.domain.event;
 
-import static christmas.config.EventName.PRESENT_EVENT;
+import static christmas.config.Event.PRESENT_EVENT;
 import static christmas.config.message.ResultMessage.BENEFIT_FORMAT;
 import static christmas.config.message.ResultMessage.NEW_LINE;
 import static christmas.config.message.ResultMessage.NONE;
@@ -41,7 +41,7 @@ public class PresentEvent {
 		StringBuilder sb = new StringBuilder();
 
 		if (!isApplicable()) {
-			return NONE.getMessage();
+			return NONE.getMessage() + NEW_LINE.getMessage();
 		}
 
 		for (Present present : presents) {

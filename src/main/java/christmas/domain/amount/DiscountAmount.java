@@ -1,6 +1,8 @@
 package christmas.domain.amount;
 
-public class DiscountAmount implements Amount {
+import christmas.domain.event.discount.Discount;
+
+public class DiscountAmount implements Amount, Discount {
 
 	private final int discountAmount;
 
