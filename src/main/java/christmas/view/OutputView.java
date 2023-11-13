@@ -15,6 +15,7 @@ import static christmas.config.message.ResultMessage.TOTAL_ORDER_AMOUNT_BEFORE_D
 import christmas.config.menu.Menu;
 import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
+import christmas.domain.amount.FinalPaymentAmount;
 import christmas.domain.event.BadgeEvent;
 import christmas.domain.event.PresentEvent;
 import christmas.domain.event.discount.DiscountConfig;
@@ -101,12 +102,10 @@ public class OutputView {
 
 	private void showPaymentAmount(Order order, VisitDate visitDate) {
 		DiscountService discountService = new DiscountService(new DiscountConfig());
-
-		int totalOrderAmount = order.getTotalOrderAmount();
-		int discountAmount = discountService.getTotalDiscountAmount(order, visitDate).getAmount();
+		FinalPaymentAmount finalPaymentAmount = new FinalPaymentAmount(order, discountService.getTotalDiscountAmount(order, visitDate));
 
 		System.out.println(ResultMessage.ESTIMATED_PAYMENT_AFTER_DISCOUNT.getMessage()
-			+ NEW_LINE + NumberFormatter.getNumberFormat(totalOrderAmount - discountAmount) + MONETARY_UNIT.getMessage() + NEW_LINE);
+			+ NEW_LINE + NumberFormatter.getNumberFormat(finalPaymentAmount.getAmount()) + MONETARY_UNIT.getMessage() + NEW_LINE);
 	}
 
 	private void showBadge(Order order, VisitDate visitDate) {

@@ -87,7 +87,7 @@
 - [X] : `Amount` 인터페이스 생성
   - [X] : TotalOrderAmount 클래스 생성
   - [X] : DiscountAmount 클래스 생성
-  - [ ] : FinalPaymentAmount 클래스 생성
+  - [X] : FinalPaymentAmount 클래스 생성
 - [X] : `PresentEvent` 클래스 생성
 - [X] : `Badge` 클래스 생성
   - 5천 원 이상: 별
