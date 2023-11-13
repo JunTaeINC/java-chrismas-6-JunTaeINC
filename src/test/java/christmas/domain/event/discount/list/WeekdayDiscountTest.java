@@ -14,18 +14,25 @@ class WeekdayDiscountTest {
 
 	private final WeekdayDiscount weekdayDiscount = new WeekdayDiscount();
 
-	@DisplayName("방문날짜가 평일인 경우 true를 반환한다")
+	@DisplayName("방문날짜가 평일이고 메뉴에 디저트가 있는 경우 true를 반환한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"4", "12", "20", "28"})
 	void isApplicable_true(String visitDate) {
-		assertThat(weekdayDiscount.isApplicable(new Order("티본스테이크-1"), new VisitDate(visitDate))).isTrue();
+		assertThat(weekdayDiscount.isApplicable(new Order("티본스테이크-1,초코케이크-2"), new VisitDate(visitDate))).isTrue();
+	}
+
+	@DisplayName("방문날짜가 평일이고 메뉴에 디저트가 없는 경우 false를 반환한다")
+	@ParameterizedTest
+	@ValueSource(strings = {"4", "12", "20", "28"})
+	void invalid_WhenNonDessert(String visitDate) {
+		assertThat(weekdayDiscount.isApplicable(new Order("티본스테이크-1,타파스-2"), new VisitDate(visitDate))).isFalse();
 	}
 
 	@DisplayName("방문날짜가 평일이 아닌 경우 false를 반환한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"1", "9", "15", "23"})
-	void isApplicable_false(String visitDate) {
-		assertThat(weekdayDiscount.isApplicable(new Order("티본스테이크-1"), new VisitDate(visitDate))).isFalse();
+	void invalid_WhenNotWeekday(String visitDate) {
+		assertThat(weekdayDiscount.isApplicable(new Order("티본스테이크-1,초코케이크-2"), new VisitDate(visitDate))).isFalse();
 	}
 
 	@Test
