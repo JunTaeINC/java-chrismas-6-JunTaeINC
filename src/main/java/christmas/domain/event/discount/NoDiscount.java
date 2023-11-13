@@ -1,4 +1,4 @@
-package christmas.domain.amount;
+package christmas.domain.event.discount;
 
 import christmas.domain.event.discount.Discount;
 

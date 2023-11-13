@@ -8,7 +8,6 @@ import static christmas.domain.constant.DiscountConstant.ZERO;
 
 import christmas.domain.VisitDate;
 import christmas.domain.amount.DiscountAmount;
-import christmas.domain.amount.NoDiscount;
 import christmas.domain.order.Order;
 import christmas.util.NumberFormatter;
 import java.util.stream.Collectors;

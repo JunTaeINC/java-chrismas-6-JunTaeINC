@@ -16,6 +16,7 @@ import christmas.config.menu.Menu;
 import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
 import christmas.domain.amount.FinalPaymentAmount;
+import christmas.domain.amount.TotalBenefitAmount;
 import christmas.domain.event.BadgeEvent;
 import christmas.domain.event.PresentEvent;
 import christmas.domain.event.discount.DiscountConfig;
@@ -95,13 +96,10 @@ public class OutputView {
 	}
 
 	private void showTotalBenefitAmount(Order order, VisitDate visitDate) {
-		DiscountService discountService = new DiscountService(new DiscountConfig());
-
-		int totalBenefitAmount = discountService.getTotalDiscountAmount(order, visitDate).getAmount()
-			+ order.getPresentEvent().getTotalBenefitAmount();
+		TotalBenefitAmount totalBenefitAmount = new TotalBenefitAmount(order, visitDate);
 
 		System.out.println(ResultMessage.TOTAL_BENEFIT_AMOUNT.getMessage()
-			+ NEW_LINE + String.format(TOTAL_BENEFIT_FORMAT.getMessage(), NumberFormatter.getNumberFormat(totalBenefitAmount)) + NEW_LINE);
+			+ NEW_LINE + totalBenefitAmount.getTotalBenefitAmount() + NEW_LINE);
 	}
 
 	private void showPaymentAmount(Order order, VisitDate visitDate) {
