@@ -11,8 +11,8 @@ import christmas.domain.order.Order;
 public class WeekendDiscount implements DiscountPolicy {
 
 	@Override
-	public boolean isApplicable(VisitDate visitDate) {
-		return visitDate.isWeekend();
+	public boolean isApplicable(Order order, VisitDate visitDate) {
+		return visitDate.isWeekend() && order.isInCategory(Category.MAIN_DISH);
 	}
 
 	@Override

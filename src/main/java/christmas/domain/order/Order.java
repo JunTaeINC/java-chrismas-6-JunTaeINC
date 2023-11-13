@@ -36,6 +36,16 @@ public class Order {
 		return count;
 	}
 
+	public boolean isInCategory(Menu.Category category) {
+		for (Map.Entry<Menu, Integer> menu : menus.entrySet()) {
+			if (menu.getKey().getCategory() == category) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	public int getTotalOrderAmount() {
 		return totalOrderAmount.getAmount();
 	}

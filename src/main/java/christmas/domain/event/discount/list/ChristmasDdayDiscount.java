@@ -11,7 +11,7 @@ import christmas.domain.order.Order;
 public class ChristmasDdayDiscount implements DiscountPolicy {
 
 	@Override
-	public boolean isApplicable(VisitDate visitDate) {
+	public boolean isApplicable(Order order, VisitDate visitDate) {
 		return visitDate.isChristmasDdayPeriod();
 	}
 

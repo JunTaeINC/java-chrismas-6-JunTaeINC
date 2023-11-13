@@ -5,7 +5,7 @@ import christmas.domain.order.Order;
 
 public interface DiscountPolicy {
 
-	boolean isApplicable(VisitDate visitDate);
+	boolean isApplicable(Order order, VisitDate visitDate);
 
 	int getDiscountAmount(Order order, VisitDate visitDate);
 

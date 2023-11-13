@@ -10,7 +10,7 @@ import christmas.domain.order.Order;
 public class SpecialDiscount implements DiscountPolicy {
 
 	@Override
-	public boolean isApplicable(VisitDate visitDate) {
+	public boolean isApplicable(Order order, VisitDate visitDate) {
 		return visitDate.isSpecialDate();
 	}
 

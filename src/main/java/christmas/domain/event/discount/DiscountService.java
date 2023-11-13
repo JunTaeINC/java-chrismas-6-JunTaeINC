@@ -27,7 +27,7 @@ public class DiscountService {
 		}
 
 		int totalDiscountAmount = discountConfig.getDiscountPolicies().stream()
-			.filter(policy -> policy.isApplicable(visitDate))
+			.filter(policy -> policy.isApplicable(order, visitDate))
 			.mapToInt(policy -> policy.getDiscountAmount(order, visitDate))
 			.sum();
 
@@ -40,7 +40,7 @@ public class DiscountService {
 		}
 
 		return discountConfig.getDiscountPolicies().stream()
-			.filter(policy -> policy.isApplicable(visitDate))
+			.filter(policy -> policy.isApplicable(order, visitDate))
 			.map(policy -> String.format(BENEFIT_FORMAT.getMessage(), policy.getEventName(), NumberFormatter.getNumberFormat(policy.getDiscountAmount(order, visitDate))))
 			.collect(Collectors.joining(NEW_LINE.getMessage()));
 	}
