@@ -2,7 +2,6 @@ package christmas.domain.order;
 
 import static christmas.config.message.ErrorMessage.EXCEEDED_ORDER_QUANTITY_LIMIT;
 import static christmas.config.message.ErrorMessage.INVALID_ORDER;
-import static christmas.config.message.ErrorMessage.ONLY_BEVERAGE_ORDER_ERROR;
 import static christmas.domain.constant.MenuConstant.MAXIMUM_ORDER_QUANTITY;
 import static christmas.domain.constant.MenuConstant.MENU_SEPARATOR;
 import static christmas.domain.constant.MenuConstant.NAME_QUANTITY_SEPARATOR;
@@ -54,7 +53,7 @@ public class OrderValidator {
 				.anyMatch(beverage -> beverage.getName().equals(orderName)));
 
 		if (isOnlyBeverage) {
-			throw new IllegalArgumentException(ONLY_BEVERAGE_ORDER_ERROR.getMessage());
+			throw new IllegalArgumentException(INVALID_ORDER.getMessage());
 		}
 	}
 

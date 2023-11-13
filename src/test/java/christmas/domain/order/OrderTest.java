@@ -2,7 +2,6 @@ package christmas.domain.order;
 
 import static christmas.config.message.ErrorMessage.EXCEEDED_ORDER_QUANTITY_LIMIT;
 import static christmas.config.message.ErrorMessage.INVALID_ORDER;
-import static christmas.config.message.ErrorMessage.ONLY_BEVERAGE_ORDER_ERROR;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -75,7 +74,7 @@ class OrderTest {
 	void testValidate_WhenOnlyBeverage(String order) {
 		exception = assertThrows(IllegalArgumentException.class, () -> new Order(order));
 
-		assertEquals(exception.getMessage(), ONLY_BEVERAGE_ORDER_ERROR.getMessage());
+		assertEquals(exception.getMessage(), INVALID_ORDER.getMessage());
 	}
 
 	@DisplayName("한번에 주문가능한 메뉴의 숫자를 넘을 경우 예외 발생")
