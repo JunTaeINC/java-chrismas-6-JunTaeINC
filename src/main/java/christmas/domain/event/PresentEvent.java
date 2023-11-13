@@ -63,7 +63,7 @@ public class PresentEvent {
 		return PRESENT_EVENT.getName();
 	}
 
-	private int getTotalBenefitAmount() {
+	public int getTotalBenefitAmount() {
 		return presents.stream()
 			.mapToInt(present -> present.getMenu().getPrice())
 			.sum();

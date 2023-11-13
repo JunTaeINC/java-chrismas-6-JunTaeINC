@@ -9,6 +9,7 @@ import static christmas.config.message.ResultMessage.GIFT_MENU;
 import static christmas.config.message.ResultMessage.MONETARY_UNIT;
 import static christmas.config.message.ResultMessage.ORDER_MENU;
 import static christmas.config.message.ResultMessage.ORDER_MENU_FORMAT;
+import static christmas.config.message.ResultMessage.TOTAL_BENEFIT_FORMAT;
 import static christmas.config.message.ResultMessage.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT;
 
 import christmas.config.menu.Menu;
@@ -43,6 +44,7 @@ public class OutputView {
 		showTotalOrderAmount(order);
 		showPresent(order);
 		showBenefitList(order, visitDate);
+		showTotalBenefitAmount(order, visitDate);
 	}
 
 	private void showOrderMenu(Order order) {
@@ -78,9 +80,19 @@ public class OutputView {
 		sb.append(discountService.getDiscountDetail(order, visitDate)).append(NEW_LINE);
 
 		if (presentEvent.isApplicable()) {
-			sb.append(presentEvent.getPresentBenefitDetail());
+			sb.append(presentEvent.getPresentBenefitDetail()).append(NEW_LINE);
 		}
 
 		System.out.println(sb);
+	}
+
+	private void showTotalBenefitAmount(Order order, VisitDate visitDate) {
+		DiscountService discountService = new DiscountService(new DiscountConfig());
+
+		int totalBenefitAmount = discountService.getTotalDiscountAmount(order, visitDate).getAmount()
+			+ order.getPresentEvent().getTotalBenefitAmount();
+
+		System.out.println(ResultMessage.TOTAL_BENEFIT_AMOUNT.getMessage()
+			+ NEW_LINE + String.format(TOTAL_BENEFIT_FORMAT.getMessage(), NumberFormatter.getNumberFormat(totalBenefitAmount)));
 	}
 }

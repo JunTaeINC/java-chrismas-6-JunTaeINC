@@ -12,6 +12,7 @@ public enum ResultMessage {
 	MONETARY_UNIT("원"),
 	ORDER_MENU_FORMAT("%s %d개"),
 	BENEFIT_FORMAT("%s: -%s원"),
+	TOTAL_BENEFIT_FORMAT("-%s원"),
 	NEW_LINE("\n");
 
 	private final String message;
