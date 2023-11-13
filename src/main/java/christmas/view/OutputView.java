@@ -45,6 +45,7 @@ public class OutputView {
 		showPresent(order);
 		showBenefitList(order, visitDate);
 		showTotalBenefitAmount(order, visitDate);
+		showPaymentAmount(order, visitDate);
 	}
 
 	private void showOrderMenu(Order order) {
@@ -93,6 +94,16 @@ public class OutputView {
 			+ order.getPresentEvent().getTotalBenefitAmount();
 
 		System.out.println(ResultMessage.TOTAL_BENEFIT_AMOUNT.getMessage()
-			+ NEW_LINE + String.format(TOTAL_BENEFIT_FORMAT.getMessage(), NumberFormatter.getNumberFormat(totalBenefitAmount)));
+			+ NEW_LINE + String.format(TOTAL_BENEFIT_FORMAT.getMessage(), NumberFormatter.getNumberFormat(totalBenefitAmount)) + NEW_LINE);
+	}
+
+	private void showPaymentAmount(Order order, VisitDate visitDate) {
+		DiscountService discountService = new DiscountService(new DiscountConfig());
+
+		int totalOrderAmount = order.getTotalOrderAmount();
+		int discountAmount = discountService.getTotalDiscountAmount(order, visitDate).getAmount();
+
+		System.out.println(ResultMessage.ESTIMATED_PAYMENT_AFTER_DISCOUNT.getMessage()
+			+ NEW_LINE + NumberFormatter.getNumberFormat(totalOrderAmount - discountAmount) + MONETARY_UNIT.getMessage());
 	}
 }
