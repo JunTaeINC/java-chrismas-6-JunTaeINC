@@ -1,15 +1,18 @@
 package christmas.config;
 
+import christmas.config.menu.Beverage;
+import christmas.config.menu.Menu;
+
 public enum Present {
-	CHAMPAGNE(120_000, "샴페인", 1);
+	CHAMPAGNE(120_000, Beverage.CHAMPAGNE, 1);
 
 	private final int baseAmount;
-	private final String name;
+	private final Menu menu;
 	private final int presentCount;
 
-	Present(int baseAmount, String name, int presentCount) {
+	Present(int baseAmount, Menu menu, int presentCount) {
 		this.baseAmount = baseAmount;
-		this.name = name;
+		this.menu = menu;
 		this.presentCount = presentCount;
 	}
 
@@ -17,8 +20,8 @@ public enum Present {
 		return baseAmount;
 	}
 
-	public String getName() {
-		return name;
+	public Menu getMenu() {
+		return menu;
 	}
 
 	public int getPresentCount() {

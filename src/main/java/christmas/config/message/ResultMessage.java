@@ -10,7 +10,9 @@ public enum ResultMessage {
 	DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
 	NONE("없음"),
 	MONETARY_UNIT("원"),
-	ORDER_MENU_FORMAT("%s %d개");
+	ORDER_MENU_FORMAT("%s %d개"),
+	BENEFIT_FORMAT("%s: -%s원"),
+	NEW_LINE("\n");
 
 	private final String message;
 

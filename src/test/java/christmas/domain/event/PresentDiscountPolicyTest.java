@@ -1,5 +1,6 @@
 package christmas.domain.event;
 
+import static christmas.config.Present.CHAMPAGNE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.MenuCategory;
@@ -8,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class PresentEventTest {
+class PresentDiscountPolicyTest {
 
 	private PresentEvent presentEvent;
 
@@ -19,7 +20,7 @@ class PresentEventTest {
 
 		presentEvent = order.getPresentEvent();
 
-		assertThat(presentEvent.getPresents()).isEqualTo(List.of("샴페인"));
+		assertThat(presentEvent.getPresents()).isEqualTo(List.of(CHAMPAGNE));
 	}
 
 	@Test

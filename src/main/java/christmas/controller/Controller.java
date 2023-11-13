@@ -39,6 +39,6 @@ public class Controller {
 
 	private void showPreviewBenefit() {
 		outputView.showBenefit();
-		outputView.showPreviewBenefit(order);
+		outputView.showPreviewBenefit(order, visitDate);
 	}
 }
