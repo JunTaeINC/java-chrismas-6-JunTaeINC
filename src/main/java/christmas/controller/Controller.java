@@ -1,10 +1,10 @@
 package christmas.controller;
 
-import christmas.domain.MenuCategory;
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
 import christmas.view.InputView;
 import christmas.view.OutputView;
+import java.util.function.Function;
 
 public class Controller {
 
@@ -24,7 +24,7 @@ public class Controller {
 	private void askVisitDate() {
 		outputView.askVisitDate();
 
-		String userInput = InputView.getUserInput();
+		String userInput = getValidInput(VisitDate::new);
 
 		visitDate = new VisitDate(userInput);
 	}
@@ -32,13 +32,29 @@ public class Controller {
 	private void askOrderMenu() {
 		outputView.askOrderMenu();
 
-		String userInput = InputView.getUserInput();
+		String userInput = getValidInput(Order::new);
 
-		order = new Order(new MenuCategory(), userInput);
+		order = new Order(userInput);
 	}
 
 	private void showPreviewBenefit() {
 		outputView.showBenefit();
 		outputView.showPreviewBenefit(order, visitDate);
+	}
+
+	private <T> String getValidInput(Function<String, T> constructor) {
+		String input;
+
+		do {
+			input = InputView.getUserInput();
+			try {
+				constructor.apply(input);
+			} catch (IllegalArgumentException e) {
+				OutputView.printExceptionMessage(e.getMessage());
+				input = null;
+			}
+		} while (input == null);
+
+		return input;
 	}
 }
