@@ -17,14 +17,14 @@ class ChristmasDdayDiscountTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"1", "3", "24", "25"})
 	void isApplicable_true(String visitDate) {
-		assertThat(christmasDdayDiscount.isApplicable(new VisitDate(visitDate))).isTrue();
+		assertThat(christmasDdayDiscount.isApplicable(new Order("티본스테이크-1"), new VisitDate(visitDate))).isTrue();
 	}
 
 	@DisplayName("크리스마스 디데이 할인 기간이 아닐 경우 false를 반환한다.")
 	@ParameterizedTest
 	@ValueSource(strings = {"26", "30", "31"})
 	void isApplicable_false(String visitDate) {
-		assertThat(christmasDdayDiscount.isApplicable(new VisitDate(visitDate))).isFalse();
+		assertThat(christmasDdayDiscount.isApplicable(new Order("티본스테이크-1"), new VisitDate(visitDate))).isFalse();
 	}
 
 	@Test

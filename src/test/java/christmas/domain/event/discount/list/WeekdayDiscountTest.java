@@ -18,14 +18,14 @@ class WeekdayDiscountTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"4", "12", "20", "28"})
 	void isApplicable_true(String visitDate) {
-		assertThat(weekdayDiscount.isApplicable(new VisitDate(visitDate))).isTrue();
+		assertThat(weekdayDiscount.isApplicable(new Order("티본스테이크-1"), new VisitDate(visitDate))).isTrue();
 	}
 
 	@DisplayName("방문날짜가 평일이 아닌 경우 false를 반환한다")
 	@ParameterizedTest
 	@ValueSource(strings = {"1", "9", "15", "23"})
 	void isApplicable_false(String visitDate) {
-		assertThat(weekdayDiscount.isApplicable(new VisitDate(visitDate))).isFalse();
+		assertThat(weekdayDiscount.isApplicable(new Order("티본스테이크-1"), new VisitDate(visitDate))).isFalse();
 	}
 
 	@Test
