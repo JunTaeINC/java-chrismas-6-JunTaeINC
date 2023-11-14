@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Order {
 
-	private Map<Menu, Integer> menus;
+	private final Map<Menu, Integer> menus;
 	private final TotalOrderAmount totalOrderAmount;
 	private final PresentEvent presentEvent;
 
@@ -70,9 +70,5 @@ public class Order {
 
 	public PresentEvent getPresentEvent() {
 		return presentEvent;
-	}
-
-	public Map<Menu, Integer> getMenus() {
-		return menus;
 	}
 }

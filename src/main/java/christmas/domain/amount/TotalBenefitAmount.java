@@ -5,7 +5,6 @@ import static christmas.domain.constant.DiscountConstant.ZERO;
 
 import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
-import christmas.domain.event.discount.DiscountConfig;
 import christmas.domain.event.discount.DiscountService;
 import christmas.domain.order.Order;
 import christmas.util.NumberFormatter;
@@ -19,7 +18,7 @@ public class TotalBenefitAmount implements Amount {
 	}
 
 	private int calculateBenefitAmount(Order order, VisitDate visitDate) {
-		DiscountService discountService = new DiscountService(new DiscountConfig());
+		DiscountService discountService = new DiscountService();
 		return discountService.getTotalDiscountAmount(order, visitDate).getAmount()
 			+ order.getPresentEvent().getTotalPresentAmount();
 	}

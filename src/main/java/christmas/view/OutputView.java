@@ -16,7 +16,6 @@ import christmas.domain.amount.FinalPaymentAmount;
 import christmas.domain.amount.TotalBenefitAmount;
 import christmas.domain.event.BadgeEvent;
 import christmas.domain.event.PresentEvent;
-import christmas.domain.event.discount.DiscountConfig;
 import christmas.domain.event.discount.DiscountService;
 import christmas.domain.order.Order;
 import christmas.util.NumberFormatter;
@@ -27,7 +26,7 @@ public class OutputView {
 	private final DiscountService discountService;
 
 	public OutputView() {
-		this.discountService = new DiscountService(new DiscountConfig());
+		this.discountService = new DiscountService();
 	}
 
 	public static void printExceptionMessage(String message) {

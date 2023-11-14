@@ -15,8 +15,8 @@ public class DiscountService {
 
 	private final DiscountConfig discountConfig;
 
-	public DiscountService(DiscountConfig discountConfig) {
-		this.discountConfig = discountConfig;
+	public DiscountService() {
+		this.discountConfig = new DiscountConfig();
 	}
 
 	public Discountable getTotalDiscountAmount(Order order, VisitDate visitDate) {

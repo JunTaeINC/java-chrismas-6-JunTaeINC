@@ -12,7 +12,7 @@ class DiscountableServiceTest {
 
 	private Order order;
 	private VisitDate visitDate;
-	private final DiscountService discountService = new DiscountService(new DiscountConfig());
+	private final DiscountService discountService = new DiscountService();
 
 	@Test
 	@DisplayName("기준금액 미만일 경우 할인이 적용되지 않는다.")
