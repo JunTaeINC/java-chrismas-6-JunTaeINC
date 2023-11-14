@@ -2,6 +2,7 @@ package christmas.domain.event;
 
 import static christmas.config.message.ResultMessage.NONE;
 
+import christmas.config.Badge;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -14,10 +15,10 @@ public class BadgeEvent {
 	}
 
 	public String getBadge() {
-		return Arrays.stream(christmas.config.Badge.values())
+		return Arrays.stream((Badge.values()))
 			.filter(badge -> discountAmount >= badge.getBaseAmount())
-			.max(Comparator.comparingInt(christmas.config.Badge::getBaseAmount))
-			.map(christmas.config.Badge::getName)
+			.max(Comparator.comparingInt(Badge::getBaseAmount))
+			.map(Badge::getName)
 			.orElse(NONE.getMessage());
 	}
 }
