@@ -4,7 +4,6 @@ import static christmas.domain.constant.DiscountConstant.SPECIAL_DISCOUNT_PRICE;
 
 import christmas.config.Event;
 import christmas.domain.VisitDate;
-import christmas.domain.event.discount.DiscountPolicy;
 import christmas.domain.order.Order;
 
 public class SpecialDiscount implements DiscountPolicy {

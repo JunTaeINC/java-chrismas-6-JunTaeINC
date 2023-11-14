@@ -1,4 +1,4 @@
-package christmas.domain.event.discount;
+package christmas.domain.event.discount.list;
 
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;

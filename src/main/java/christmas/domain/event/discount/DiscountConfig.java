@@ -1,6 +1,7 @@
 package christmas.domain.event.discount;
 
 import christmas.domain.event.discount.list.ChristmasDdayDiscount;
+import christmas.domain.event.discount.list.DiscountPolicy;
 import christmas.domain.event.discount.list.SpecialDiscount;
 import christmas.domain.event.discount.list.WeekdayDiscount;
 import christmas.domain.event.discount.list.WeekendDiscount;
