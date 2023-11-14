@@ -45,7 +45,7 @@ class VisitDateTest {
 	}
 
 	@Test
-	@DisplayName("방문 날짜 입력시 문자를 입력할 경우 예외 발생")
+	@DisplayName("방문 날짜 입력시 해당일이 없을 경우 예외 발생")
 	void testValidate_WhenInvalidDateRange() {
 		String over_range = "32";
 

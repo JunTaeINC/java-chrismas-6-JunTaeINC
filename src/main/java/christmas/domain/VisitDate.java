@@ -9,9 +9,9 @@ import static christmas.domain.constant.DateConstant.WEEKDAYS;
 import static christmas.domain.constant.DateConstant.WEEKEND;
 import static christmas.domain.constant.DateConstant.YEARS;
 
-import christmas.domain.constant.DateConstant;
 import christmas.validator.InputValidator;
 import christmas.validator.NumberValidator;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 public class VisitDate {
@@ -39,7 +39,13 @@ public class VisitDate {
 	}
 
 	private static boolean isValidDay(String date) {
-		return date.matches(DateConstant.DAY_OF_MONTH_PATTERN.pattern());
+		try {
+			int day = Integer.parseInt(date);
+			LocalDate.of(YEARS, MONTH, day);
+			return true;
+		} catch (DateTimeException e) {
+			return false;
+		}
 	}
 
 	private int convertToInt(String date) {
