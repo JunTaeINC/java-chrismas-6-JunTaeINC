@@ -2,10 +2,12 @@ package christmas.domain.order;
 
 import static christmas.config.message.ErrorMessage.EXCEEDED_ORDER_QUANTITY_LIMIT;
 import static christmas.config.message.ErrorMessage.INVALID_ORDER;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import christmas.config.menu.Menu.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,6 +16,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 class OrderTest {
 
 	private Exception exception;
+	private Order order;
 
 	@DisplayName("주문이 올바르게 생성되는지 테스트")
 	@ParameterizedTest
@@ -84,5 +87,45 @@ class OrderTest {
 		exception = assertThrows(IllegalArgumentException.class, () -> new Order(order));
 
 		assertEquals(exception.getMessage(), EXCEEDED_ORDER_QUANTITY_LIMIT.getMessage());
+	}
+
+	@Test
+	@DisplayName("주문 메뉴에 알고싶은 카테고리의 수량을 올바르게 반환하는지 테스트")
+	void getCountInCategory_v1() {
+		order = new Order("티본스테이크-4,해산물파스타-3,제로콜라-2,레드와인-1");
+
+		int countInCategory = order.getCountInCategory(Category.MAIN_DISH);
+
+		assertThat(countInCategory).isEqualTo(7);
+	}
+
+	@Test
+	@DisplayName("주문 메뉴에 알고싶은 카테고리의 수량을 올바르게 반환하는지 테스트")
+	void getCountInCategory_v2() {
+		order = new Order("티본스테이크-4,해산물파스타-3,제로콜라-2,레드와인-1");
+
+		int countInCategory = order.getCountInCategory(Category.DESSERT);
+
+		assertThat(countInCategory).isEqualTo(0);
+	}
+
+	@Test
+	@DisplayName("주문 메뉴에 해당 카테고리가 있으면 true 반환")
+	void isInCategory_true() {
+		order = new Order("티본스테이크-4,해산물파스타-3,제로콜라-2,레드와인-1");
+
+		boolean result = order.isInCategory(Category.MAIN_DISH);
+
+		assertThat(result).isTrue();
+	}
+
+	@Test
+	@DisplayName("주문 메뉴에 해당 카테고리가 없으면 false 반환")
+	void isInCategory_false() {
+		order = new Order("티본스테이크-4,해산물파스타-3,제로콜라-2,레드와인-1");
+
+		boolean result = order.isInCategory(Category.APPETIZER);
+
+		assertThat(result).isFalse();
 	}
 }
