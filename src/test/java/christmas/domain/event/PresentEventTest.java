@@ -42,7 +42,7 @@ class PresentEventTest {
 
 		String presentList = presentEvent.getPresentList();
 
-		assertThat(presentList).isEqualTo(CHAMPAGNE.getMenu().getName());
+		assertThat(presentList).isEqualTo("샴페인 1개");
 	}
 
 	@Test

@@ -1,6 +1,15 @@
 package christmas.domain.event.discount;
 
-public interface Discount {
+public class Discount implements Discountable {
 
-	int getAmount();
+	private final int discountAmount;
+
+	public Discount(int discountAmount) {
+		this.discountAmount = discountAmount;
+	}
+
+	@Override
+	public int getAmount() {
+		return discountAmount;
+	}
 }

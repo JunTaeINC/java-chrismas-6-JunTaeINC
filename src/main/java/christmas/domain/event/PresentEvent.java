@@ -41,14 +41,14 @@ public class PresentEvent {
 		StringBuilder sb = new StringBuilder();
 
 		if (!isApplicable()) {
-			return NONE.getMessage() + NEW_LINE.getMessage();
+			return NONE.getMessage();
 		}
 
 		for (Present present : presents) {
 			sb.append(String.format(ORDER_MENU_FORMAT.getMessage(), present.getMenu().getName(), present.getPresentCount())).append(NEW_LINE.getMessage());
 		}
 
-		return sb.toString();
+		return sb.toString().trim();
 	}
 
 	public String getPresentBenefitDetail() {

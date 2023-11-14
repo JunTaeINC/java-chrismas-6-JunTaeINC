@@ -76,7 +76,7 @@ public class OutputView {
 	}
 
 	private void showPresent(Order order) {
-		System.out.println(GIFT_MENU.getMessage() + NEW_LINE + order.getPresentEvent().getPresentList());
+		System.out.println(GIFT_MENU.getMessage() + NEW_LINE + order.getPresentEvent().getPresentList() + NEW_LINE);
 	}
 
 	private void showBenefitList(Order order, VisitDate visitDate) {

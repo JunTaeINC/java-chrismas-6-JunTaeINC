@@ -4,12 +4,11 @@ import static christmas.config.message.ResultMessage.NONE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.VisitDate;
-import christmas.domain.amount.DiscountAmount;
 import christmas.domain.order.Order;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class DiscountServiceTest {
+class DiscountableServiceTest {
 
 	private Order order;
 	private VisitDate visitDate;
@@ -21,7 +20,7 @@ class DiscountServiceTest {
 		order = new Order("타파스-1");
 		visitDate = new VisitDate("24");
 
-		Discount nodiscount = discountService.getTotalDiscountAmount(order, visitDate);
+		Discountable nodiscount = discountService.getTotalDiscountAmount(order, visitDate);
 
 		assertThat(nodiscount).isInstanceOf(NoDiscount.class);
 	}
@@ -32,9 +31,9 @@ class DiscountServiceTest {
 		order = new Order("타파스-2");
 		visitDate = new VisitDate("24");
 
-		Discount nodiscount = discountService.getTotalDiscountAmount(order, visitDate);
+		Discountable nodiscount = discountService.getTotalDiscountAmount(order, visitDate);
 
-		assertThat(nodiscount).isInstanceOf(DiscountAmount.class);
+		assertThat(nodiscount).isInstanceOf(Discount.class);
 	}
 
 	@Test

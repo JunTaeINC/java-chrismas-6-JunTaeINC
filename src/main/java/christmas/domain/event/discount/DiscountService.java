@@ -7,7 +7,6 @@ import static christmas.domain.constant.DiscountConstant.MINIMUM_ORDER_AMOUNT;
 import static christmas.domain.constant.DiscountConstant.ZERO;
 
 import christmas.domain.VisitDate;
-import christmas.domain.amount.DiscountAmount;
 import christmas.domain.order.Order;
 import christmas.util.NumberFormatter;
 import java.util.stream.Collectors;
@@ -20,7 +19,7 @@ public class DiscountService {
 		this.discountConfig = discountConfig;
 	}
 
-	public Discount getTotalDiscountAmount(Order order, VisitDate visitDate) {
+	public Discountable getTotalDiscountAmount(Order order, VisitDate visitDate) {
 		if (order.getTotalOrderAmount() < MINIMUM_ORDER_AMOUNT) {
 			return new NoDiscount();
 		}
@@ -30,7 +29,7 @@ public class DiscountService {
 			.mapToInt(policy -> policy.getDiscountAmount(order, visitDate))
 			.sum();
 
-		return new DiscountAmount(totalDiscountAmount);
+		return new Discount(totalDiscountAmount);
 	}
 
 	public String getDiscountDetail(Order order, VisitDate visitDate) {
