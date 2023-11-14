@@ -1,9 +1,13 @@
 package christmas.domain.order;
 
+import static christmas.config.message.ResultMessage.NEW_LINE;
+import static christmas.config.message.ResultMessage.ORDER_MENU_FORMAT;
+
 import christmas.config.menu.Menu;
 import christmas.domain.MenuCategory;
 import christmas.domain.amount.TotalOrderAmount;
 import christmas.domain.event.PresentEvent;
+import christmas.util.NumberFormatter;
 import java.util.Map;
 
 public class Order {
@@ -44,6 +48,20 @@ public class Order {
 		}
 
 		return false;
+	}
+
+	public String getTotalOrderAmountNumberFormat() {
+		return NumberFormatter.getNumberFormat(getTotalOrderAmount());
+	}
+
+	public String getOrderMenuList() {
+		StringBuilder sb = new StringBuilder();
+		for (Map.Entry<Menu, Integer> menu : menus.entrySet()) {
+			sb.append(String.format(ORDER_MENU_FORMAT.getMessage(), menu.getKey().getName(), menu.getValue()))
+				.append(NEW_LINE.getMessage());
+		}
+
+		return sb.toString();
 	}
 
 	public int getTotalOrderAmount() {

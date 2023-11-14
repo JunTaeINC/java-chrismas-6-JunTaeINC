@@ -8,10 +8,8 @@ import static christmas.config.message.ResultMessage.BENEFIT_DETAILS;
 import static christmas.config.message.ResultMessage.GIFT_MENU;
 import static christmas.config.message.ResultMessage.MONETARY_UNIT;
 import static christmas.config.message.ResultMessage.ORDER_MENU;
-import static christmas.config.message.ResultMessage.ORDER_MENU_FORMAT;
 import static christmas.config.message.ResultMessage.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT;
 
-import christmas.config.menu.Menu;
 import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
 import christmas.domain.amount.FinalPaymentAmount;
@@ -22,11 +20,15 @@ import christmas.domain.event.discount.DiscountConfig;
 import christmas.domain.event.discount.DiscountService;
 import christmas.domain.order.Order;
 import christmas.util.NumberFormatter;
-import java.util.Map;
 
 public class OutputView {
 
 	private final String NEW_LINE = ResultMessage.NEW_LINE.getMessage();
+	private final DiscountService discountService;
+
+	public OutputView() {
+		this.discountService = new DiscountService(new DiscountConfig());
+	}
 
 	public static void printExceptionMessage(String message) {
 		System.out.println(message);
@@ -56,31 +58,24 @@ public class OutputView {
 	}
 
 	private void showOrderMenu(Order order) {
-		Map<Menu, Integer> menus = order.getMenus();
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(NEW_LINE).append(ORDER_MENU.getMessage()).append(NEW_LINE);
+		sb.append(order.getOrderMenuList());
 
-		for (Map.Entry<Menu, Integer> menu : menus.entrySet()) {
-			sb.append(String.format(ORDER_MENU_FORMAT.getMessage(), menu.getKey().getName(), menu.getValue())).append(NEW_LINE);
-		}
-
-		System.out.println(sb);
+		print(sb.toString());
 	}
 
 	private void showTotalOrderAmount(Order order) {
-		String totalOrderAmount = NumberFormatter.getNumberFormat(order.getTotalOrderAmount());
-
-		System.out.println(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage()
-			+ NEW_LINE + totalOrderAmount + MONETARY_UNIT.getMessage() + NEW_LINE);
+		print(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage()
+			+ NEW_LINE + order.getTotalOrderAmountNumberFormat() + MONETARY_UNIT.getMessage() + NEW_LINE);
 	}
 
 	private void showPresent(Order order) {
-		System.out.println(GIFT_MENU.getMessage() + NEW_LINE + order.getPresentEvent().getPresentList() + NEW_LINE);
+		print(GIFT_MENU.getMessage() + NEW_LINE + order.getPresentEvent().getPresentList() + NEW_LINE);
 	}
 
 	private void showBenefitList(Order order, VisitDate visitDate) {
-		DiscountService discountService = new DiscountService(new DiscountConfig());
 		StringBuilder sb = new StringBuilder();
 		PresentEvent presentEvent = order.getPresentEvent();
 
@@ -91,30 +86,31 @@ public class OutputView {
 			sb.append(presentEvent.getPresentBenefitDetail()).append(NEW_LINE);
 		}
 
-		System.out.println(sb);
+		print(sb.toString());
 	}
 
 	private void showTotalBenefitAmount(Order order, VisitDate visitDate) {
 		TotalBenefitAmount totalBenefitAmount = new TotalBenefitAmount(order, visitDate);
 
-		System.out.println(ResultMessage.TOTAL_BENEFIT_AMOUNT.getMessage()
-			+ NEW_LINE + totalBenefitAmount.getTotalBenefitAmount() + NEW_LINE);
+		print(ResultMessage.TOTAL_BENEFIT_AMOUNT.getMessage()
+			+ NEW_LINE + totalBenefitAmount.getTotalBenefitAmountNumberFormat() + NEW_LINE);
 	}
 
 	private void showPaymentAmount(Order order, VisitDate visitDate) {
-		DiscountService discountService = new DiscountService(new DiscountConfig());
 		FinalPaymentAmount finalPaymentAmount = new FinalPaymentAmount(order, discountService.getTotalDiscountAmount(order, visitDate));
 
-		System.out.println(ResultMessage.ESTIMATED_PAYMENT_AFTER_DISCOUNT.getMessage()
+		print(ResultMessage.ESTIMATED_PAYMENT_AFTER_DISCOUNT.getMessage()
 			+ NEW_LINE + NumberFormatter.getNumberFormat(finalPaymentAmount.getAmount()) + MONETARY_UNIT.getMessage() + NEW_LINE);
 	}
 
 	private void showBadge(Order order, VisitDate visitDate) {
-		DiscountService discountService = new DiscountService(new DiscountConfig());
-
 		BadgeEvent badge = new BadgeEvent(discountService.getTotalDiscountAmount(order, visitDate).getAmount()
 			+ order.getPresentEvent().getTotalPresentAmount());
 
-		System.out.print(ResultMessage.DECEMBER_EVENT_BADGE.getMessage() + NEW_LINE + badge.getBadge());
+		print(ResultMessage.DECEMBER_EVENT_BADGE.getMessage() + NEW_LINE + badge.getBadge());
+	}
+
+	private void print(String message) {
+		System.out.println(message);
 	}
 }

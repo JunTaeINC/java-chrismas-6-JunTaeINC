@@ -21,7 +21,7 @@ class TotalBenefitAmountTest {
 		visitDate = new VisitDate("25");
 		totalBenefitAmount = new TotalBenefitAmount(order, visitDate);
 
-		String result = totalBenefitAmount.getTotalBenefitAmount();
+		String result = totalBenefitAmount.getTotalBenefitAmountNumberFormat();
 
 		// 크리스마스 디데이 할인 : 3,400
 		// 평일 할인 : 2,023 (초코케이크)
@@ -36,7 +36,7 @@ class TotalBenefitAmountTest {
 		visitDate = new VisitDate("28");
 		totalBenefitAmount = new TotalBenefitAmount(order, visitDate);
 
-		String result = totalBenefitAmount.getTotalBenefitAmount();
+		String result = totalBenefitAmount.getTotalBenefitAmountNumberFormat();
 
 		assertThat(result).isEqualTo(NONE.getMessage());
 	}

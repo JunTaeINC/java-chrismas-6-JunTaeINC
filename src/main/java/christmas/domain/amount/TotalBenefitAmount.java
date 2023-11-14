@@ -29,7 +29,7 @@ public class TotalBenefitAmount implements Amount {
 		return totalBenefitAmount;
 	}
 
-	public String getTotalBenefitAmount() {
+	public String getTotalBenefitAmountNumberFormat() {
 		if (!isApplicable()) {
 			return NONE.getMessage();
 		}
