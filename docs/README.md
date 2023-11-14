@@ -122,6 +122,9 @@
   - `ChristmasDdayDiscountTest`
     - 방문 날짜가 크리스마스 디데이 할인 날짜인지 검증
     - 방문 날짜에 따라서 할인금액 반환 검증
+  - `TotalBenefitAmountTest`
+    - 총 혜택금액 반환 검증
+    - 혜택금액이 없을 경우 없음 반환 검증
 
 - `BadgeTest`
   - 할인 금액에 따른 뱃지 반환 검증
