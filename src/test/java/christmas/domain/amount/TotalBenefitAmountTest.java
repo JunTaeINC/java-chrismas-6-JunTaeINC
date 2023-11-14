@@ -1,11 +1,10 @@
 package christmas.domain.amount;
 
-import static org.assertj.core.api.Assertions.*;
+import static christmas.config.message.ResultMessage.NONE;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +38,6 @@ class TotalBenefitAmountTest {
 
 		String result = totalBenefitAmount.getTotalBenefitAmount();
 
-		assertThat(result).isEqualTo("없음");
+		assertThat(result).isEqualTo(NONE.getMessage());
 	}
 }

@@ -9,7 +9,6 @@ import static christmas.config.message.ResultMessage.GIFT_MENU;
 import static christmas.config.message.ResultMessage.MONETARY_UNIT;
 import static christmas.config.message.ResultMessage.ORDER_MENU;
 import static christmas.config.message.ResultMessage.ORDER_MENU_FORMAT;
-import static christmas.config.message.ResultMessage.TOTAL_BENEFIT_FORMAT;
 import static christmas.config.message.ResultMessage.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT;
 
 import christmas.config.menu.Menu;
@@ -114,7 +113,7 @@ public class OutputView {
 		DiscountService discountService = new DiscountService(new DiscountConfig());
 
 		BadgeEvent badge = new BadgeEvent(discountService.getTotalDiscountAmount(order, visitDate).getAmount()
-			+ order.getPresentEvent().getTotalBenefitAmount());
+			+ order.getPresentEvent().getTotalPresentAmount());
 
 		System.out.print(ResultMessage.DECEMBER_EVENT_BADGE.getMessage() + NEW_LINE + badge.getBadge());
 	}

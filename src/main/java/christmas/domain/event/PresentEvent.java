@@ -52,7 +52,7 @@ public class PresentEvent {
 	}
 
 	public String getPresentBenefitDetail() {
-		return String.format(BENEFIT_FORMAT.getMessage(), getEventName(), NumberFormatter.getNumberFormat(getTotalBenefitAmount()));
+		return String.format(BENEFIT_FORMAT.getMessage(), getEventName(), NumberFormatter.getNumberFormat(getTotalPresentAmount()));
 	}
 
 	public boolean isApplicable() {
@@ -63,7 +63,7 @@ public class PresentEvent {
 		return PRESENT_EVENT.getName();
 	}
 
-	public int getTotalBenefitAmount() {
+	public int getTotalPresentAmount() {
 		return presents.stream()
 			.mapToInt(present -> present.getMenu().getPrice())
 			.sum();

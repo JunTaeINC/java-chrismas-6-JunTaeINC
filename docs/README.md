@@ -113,7 +113,7 @@
   - 주문 예외 검증
   - 주문 목록에 해당 카테고리 메뉴의 수 반환 검증
   - 주문 목록에 해당 카테고리가 존재하는지 반환 검증
-- Discount
+- **Discount**
   - `WeekdayDiscountTest`
     - 방문 날짜 평일인지 검증
     - 디저트의 수량만큼 평일 할인금액 반환 검증
@@ -125,17 +125,18 @@
   - `ChristmasDdayDiscountTest`
     - 방문 날짜가 크리스마스 디데이 할인 날짜인지 검증
     - 방문 날짜에 따라서 할인금액 반환 검증
-  - `TotalBenefitAmountTest`
-    - 총 혜택금액 반환 검증
-    - 혜택금액이 없을 경우 없음 반환 검증
 
 - `BadgeTest`
   - 할인 금액에 따른 뱃지 반환 검증
 - `PresentEventTest`
-  - 총 주문금액 기준 증정품 증정 검증
+  - 총 주문금액 기준 증정품 유/무 검증
+  - 총 주문금액 기준 증정품 목록 반환 검증
 
-- Amount
+- **Amount**
   - `TotalOrderAmountTest`
     - 총 주문금액 반환 검증
   - `FinalPaymentAmountTest`
     - 최종 결제금액 반환 검증
+  - `TotalBenefitAmountTest`
+    - 총 혜택금액 반환 검증
+    - 혜택금액이 없을 경우 없음 반환 검증

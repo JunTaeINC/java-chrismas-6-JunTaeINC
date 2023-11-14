@@ -21,7 +21,7 @@ public class TotalBenefitAmount implements Amount {
 	private int calculateBenefitAmount(Order order, VisitDate visitDate) {
 		DiscountService discountService = new DiscountService(new DiscountConfig());
 		return discountService.getTotalDiscountAmount(order, visitDate).getAmount()
-			+ order.getPresentEvent().getTotalBenefitAmount();
+			+ order.getPresentEvent().getTotalPresentAmount();
 	}
 
 	@Override
