@@ -110,20 +110,26 @@
   - 방문 날짜 예외 검증
 - `OrderTest`
   - 주문 예외 검증
-- `WeekdayDiscountTest`
-  - 방문 날짜 평일인지 검증
-  - 디저트의 수량만큼 평일 할인금액 반환 검증
-- `WeekendDiscountTest`
-  - 방문 날짜 주말인지 검증
-  - 메인음식의 수량만큼 주말 할인금액 반환 검증
-- `SpecialDiscountTest`
-  - 방문 날짜 특별할인 날짜인지 검증
-- `ChristmasDdayDiscountTest`
-  - 방문 날짜가 크리스마스 디데이 할인 날짜인지 검증
-  - 방문 날짜에 따라서 할인금액 반환 검증
+- Discount
+  - `WeekdayDiscountTest`
+    - 방문 날짜 평일인지 검증
+    - 디저트의 수량만큼 평일 할인금액 반환 검증
+  - `WeekendDiscountTest`
+    - 방문 날짜 주말인지 검증
+    - 메인음식의 수량만큼 주말 할인금액 반환 검증
+  - `SpecialDiscountTest`
+    - 방문 날짜 특별할인 날짜인지 검증
+  - `ChristmasDdayDiscountTest`
+    - 방문 날짜가 크리스마스 디데이 할인 날짜인지 검증
+    - 방문 날짜에 따라서 할인금액 반환 검증
+
 - `BadgeTest`
   - 할인 금액에 따른 뱃지 반환 검증
-- `TotalOrderAmountTest`
-  - 총 주문금액 반환 검증
 - `PresentEventTest`
   - 총 주문금액 기준 증정품 증정 검증
+
+- Amount
+  - `TotalOrderAmountTest`
+    - 총 주문금액 반환 검증
+  - `FinalPaymentAmountTest`
+    - 최종 결제금액 반환 검증
