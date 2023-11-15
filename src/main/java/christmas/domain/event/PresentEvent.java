@@ -1,7 +1,6 @@
 package christmas.domain.event;
 
 import static christmas.config.Event.PRESENT_EVENT;
-import static christmas.config.message.ResultMessage.NEW_LINE;
 import static christmas.config.message.ResultMessage.NONE;
 
 import christmas.config.Present;
@@ -43,7 +42,7 @@ public class PresentEvent {
 		}
 
 		for (Present present : presents) {
-			sb.append(ResultMessage.getOrderMenuFormat(present.getMenu().getName(), present.getPresentCount())).append(NEW_LINE.getMessage());
+			sb.append(ResultMessage.getPresentFormat(present.getMenu().getName(), present.getPresentCount()));
 		}
 
 		return sb.toString().trim();

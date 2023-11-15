@@ -27,8 +27,38 @@ public enum ResultMessage {
 		return message;
 	}
 
+	public static String getOrderMenuFormat(String orderMenuList) {
+		return NEW_LINE.getMessage() + ORDER_MENU.getMessage() + NEW_LINE.getMessage() + orderMenuList;
+	}
+
+	public static String getTotalOrderAmountFormat(int totalOrderAmount) {
+		return TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage() + NEW_LINE.getMessage()
+			+ NumberFormatter.getNumberFormat(totalOrderAmount) + MONETARY_UNIT.getMessage() + NEW_LINE.getMessage();
+	}
+
+	public static String getGiftFormat(String gifts) {
+		return GIFT_MENU.getMessage() + NEW_LINE.getMessage() + gifts + NEW_LINE.getMessage();
+	}
+
+	public static String getTotalBenefitAmountFormat(String totalBenefitAmount) {
+		return TOTAL_BENEFIT_AMOUNT.getMessage() + NEW_LINE.getMessage() + totalBenefitAmount + NEW_LINE.getMessage();
+	}
+
+	public static String getFinalPaymentAmountFormat(int finalPaymentAmount) {
+		return ESTIMATED_PAYMENT_AFTER_DISCOUNT.getMessage() + NEW_LINE.getMessage()
+			+ NumberFormatter.getNumberFormat(finalPaymentAmount) + MONETARY_UNIT.getMessage() + NEW_LINE.getMessage();
+	}
+
+	public static String getBadgeEventFormat(String badge) {
+		return DECEMBER_EVENT_BADGE.getMessage() + NEW_LINE.getMessage() + badge;
+	}
+
 	public static String getOrderMenuFormat(String menuName, int count) {
-		return String.format(ORDER_MENU_FORMAT.getMessage(), menuName, NumberFormatter.getNumberFormat(count));
+		return String.format(ORDER_MENU_FORMAT.getMessage(), menuName, NumberFormatter.getNumberFormat(count)) + NEW_LINE.getMessage();
+	}
+
+	public static String getPresentFormat(String menuName, int count) {
+		return String.format(ORDER_MENU_FORMAT.getMessage(), menuName, NumberFormatter.getNumberFormat(count)) + NEW_LINE.getMessage();
 	}
 
 	public static String getBenefitFormat(String eventName, int discountAmount) {

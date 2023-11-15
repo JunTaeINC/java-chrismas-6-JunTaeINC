@@ -11,6 +11,7 @@ public class Controller {
 	private VisitDate visitDate;
 	private Order order;
 	private final OutputView outputView = new OutputView();
+	private final InputView inputView = new InputView();
 
 	public void run() {
 		askVisitDate();
@@ -46,11 +47,11 @@ public class Controller {
 		String input;
 
 		do {
-			input = InputView.getUserInput().trim();
+			input = inputView.getUserInput().trim();
 			try {
 				constructor.apply(input);
 			} catch (IllegalArgumentException e) {
-				OutputView.printExceptionMessage(e.getMessage());
+				outputView.printExceptionMessage(e.getMessage());
 				input = null;
 			}
 		} while (input == null);

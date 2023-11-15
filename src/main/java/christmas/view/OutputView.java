@@ -5,13 +5,6 @@ import static christmas.config.message.GuideMessage.ASK_VISIT_DATE;
 import static christmas.config.message.GuideMessage.GREETING;
 import static christmas.config.message.GuideMessage.PREVIEW_EVENT;
 import static christmas.config.message.ResultMessage.BENEFIT_DETAILS;
-import static christmas.config.message.ResultMessage.DECEMBER_EVENT_BADGE;
-import static christmas.config.message.ResultMessage.ESTIMATED_PAYMENT_AFTER_DISCOUNT;
-import static christmas.config.message.ResultMessage.GIFT_MENU;
-import static christmas.config.message.ResultMessage.MONETARY_UNIT;
-import static christmas.config.message.ResultMessage.ORDER_MENU;
-import static christmas.config.message.ResultMessage.TOTAL_BENEFIT_AMOUNT;
-import static christmas.config.message.ResultMessage.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT;
 
 import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
@@ -21,7 +14,6 @@ import christmas.domain.event.BadgeEvent;
 import christmas.domain.event.PresentEvent;
 import christmas.domain.event.discount.DiscountService;
 import christmas.domain.order.Order;
-import christmas.util.NumberFormatter;
 
 public class OutputView {
 
@@ -32,7 +24,7 @@ public class OutputView {
 		this.discountService = new DiscountService();
 	}
 
-	public static void printExceptionMessage(String message) {
+	public void printExceptionMessage(String message) {
 		System.out.println(message);
 	}
 
@@ -60,21 +52,15 @@ public class OutputView {
 	}
 
 	private void showOrderMenu(Order order) {
-		StringBuilder sb = new StringBuilder();
-
-		sb.append(NEW_LINE).append(ORDER_MENU.getMessage()).append(NEW_LINE);
-		sb.append(order.getOrderMenuList());
-
-		print(sb.toString());
+		print(ResultMessage.getOrderMenuFormat(order.getOrderMenuList()));
 	}
 
 	private void showTotalOrderAmount(Order order) {
-		print(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage() + NEW_LINE
-			+ order.getTotalOrderAmountNumberFormat() + MONETARY_UNIT.getMessage() + NEW_LINE);
+		print(ResultMessage.getTotalOrderAmountFormat(order.getTotalOrderAmount()));
 	}
 
 	private void showPresent(Order order) {
-		print(GIFT_MENU.getMessage() + NEW_LINE + order.getPresentEvent().getPresentList() + NEW_LINE);
+		print(ResultMessage.getGiftFormat(order.getPresentEvent().getPresentList()));
 	}
 
 	private void showBenefitList(Order order, VisitDate visitDate) {
@@ -94,21 +80,19 @@ public class OutputView {
 	private void showTotalBenefitAmount(Order order, VisitDate visitDate) {
 		TotalBenefitAmount totalBenefitAmount = new TotalBenefitAmount(order, visitDate);
 
-		print(TOTAL_BENEFIT_AMOUNT.getMessage() + NEW_LINE
-			+ totalBenefitAmount.getTotalBenefitAmountNumberFormat() + NEW_LINE);
+		print(ResultMessage.getTotalBenefitAmountFormat(totalBenefitAmount.getTotalBenefitAmountNumberFormat()));
 	}
 
 	private void showPaymentAmount(Order order, VisitDate visitDate) {
 		FinalPaymentAmount finalPaymentAmount = new FinalPaymentAmount(order, discountService.getTotalDiscountAmount(order, visitDate));
 
-		print(ESTIMATED_PAYMENT_AFTER_DISCOUNT.getMessage()
-			+ NEW_LINE + NumberFormatter.getNumberFormat(finalPaymentAmount.getAmount()) + MONETARY_UNIT.getMessage() + NEW_LINE);
+		print(ResultMessage.getFinalPaymentAmountFormat(finalPaymentAmount.getAmount()));
 	}
 
 	private void showBadge(Order order, VisitDate visitDate) {
 		BadgeEvent badge = new BadgeEvent(new TotalBenefitAmount(order, visitDate));
 
-		print(DECEMBER_EVENT_BADGE.getMessage() + NEW_LINE + badge.getBadge());
+		print(ResultMessage.getBadgeEventFormat(badge.getBadge()));
 	}
 
 	private void print(String message) {
