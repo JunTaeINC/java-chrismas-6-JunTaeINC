@@ -3,6 +3,7 @@ package christmas.domain.event;
 import static christmas.config.message.ResultMessage.NONE;
 
 import christmas.config.Badge;
+import christmas.domain.amount.TotalBenefitAmount;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -10,8 +11,8 @@ public class BadgeEvent {
 
 	private final int discountAmount;
 
-	public BadgeEvent(int discountAmount) {
-		this.discountAmount = discountAmount;
+	public BadgeEvent(TotalBenefitAmount totalBenefitAmount) {
+		this.discountAmount = totalBenefitAmount.getAmount();
 	}
 
 	public String getBadge() {
