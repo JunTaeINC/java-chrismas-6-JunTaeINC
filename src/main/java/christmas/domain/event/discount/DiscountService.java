@@ -2,7 +2,7 @@ package christmas.domain.event.discount;
 
 import static christmas.config.message.ResultMessage.NEW_LINE;
 import static christmas.config.message.ResultMessage.NONE;
-import static christmas.domain.constant.DiscountConstant.MINIMUM_ORDER_AMOUNT;
+import static christmas.domain.constant.DiscountConstant.APPLICABLE_BENEFIT_MINIMUM_ORDER_AMOUNT;
 import static christmas.domain.constant.DiscountConstant.ZERO;
 
 import christmas.config.message.ResultMessage;
@@ -19,7 +19,7 @@ public class DiscountService {
 	}
 
 	public Discountable getTotalDiscountAmount(Order order, VisitDate visitDate) {
-		if (order.getTotalOrderAmount() < MINIMUM_ORDER_AMOUNT) {
+		if (order.getTotalOrderAmount() < APPLICABLE_BENEFIT_MINIMUM_ORDER_AMOUNT) {
 			return new NoDiscount();
 		}
 

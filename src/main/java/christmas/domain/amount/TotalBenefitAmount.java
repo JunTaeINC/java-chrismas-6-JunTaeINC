@@ -1,6 +1,5 @@
 package christmas.domain.amount;
 
-import static christmas.config.message.ResultMessage.NONE;
 import static christmas.domain.constant.DiscountConstant.ZERO;
 
 import christmas.config.message.ResultMessage;
@@ -29,7 +28,7 @@ public class TotalBenefitAmount implements Amount {
 
 	public String getTotalBenefitAmountNumberFormat() {
 		if (!isApplicable()) {
-			return NONE.getMessage();
+			return totalBenefitAmount + ResultMessage.MONETARY_UNIT.getMessage();
 		}
 
 		return ResultMessage.getTotalBenefitFormat(totalBenefitAmount);

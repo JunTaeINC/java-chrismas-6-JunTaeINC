@@ -38,6 +38,6 @@ class TotalBenefitAmountTest {
 
 		String result = totalBenefitAmount.getTotalBenefitAmountNumberFormat();
 
-		assertThat(result).isEqualTo(NONE.getMessage());
+		assertThat(result).isEqualTo("0원");
 	}
 }
