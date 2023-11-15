@@ -48,9 +48,9 @@ public class OrderValidator {
 	private void validateOnlyBeverageOrder(MenuCategory menuCategory, String[] orders) {
 		boolean isOnlyBeverage = Arrays.stream(orders)
 			.map(order -> order.split(NAME_QUANTITY_SEPARATOR)[0])
-			.allMatch(orderName -> menuCategory.getMenuCategory().stream()
+			.allMatch(menuName -> menuCategory.getMenuCategory().stream()
 				.filter(menu -> menu instanceof Beverage)
-				.anyMatch(beverage -> beverage.getName().equals(orderName)));
+				.anyMatch(beverage -> beverage.getName().equals(menuName)));
 
 		if (isOnlyBeverage) {
 			throw new IllegalArgumentException(INVALID_ORDER.getMessage());

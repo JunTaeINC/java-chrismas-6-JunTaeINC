@@ -7,7 +7,6 @@ import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
 import christmas.domain.event.discount.DiscountService;
 import christmas.domain.order.Order;
-import christmas.util.NumberFormatter;
 
 public class TotalBenefitAmount implements Amount {
 
@@ -33,7 +32,7 @@ public class TotalBenefitAmount implements Amount {
 			return NONE.getMessage();
 		}
 
-		return String.format(ResultMessage.TOTAL_BENEFIT_FORMAT.getMessage(), NumberFormatter.getNumberFormat(totalBenefitAmount));
+		return ResultMessage.getTotalBenefitFormat(totalBenefitAmount);
 	}
 
 	private boolean isApplicable() {

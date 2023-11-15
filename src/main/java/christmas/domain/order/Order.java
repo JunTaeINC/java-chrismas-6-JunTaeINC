@@ -1,9 +1,9 @@
 package christmas.domain.order;
 
 import static christmas.config.message.ResultMessage.NEW_LINE;
-import static christmas.config.message.ResultMessage.ORDER_MENU_FORMAT;
 
 import christmas.config.menu.Menu;
+import christmas.config.message.ResultMessage;
 import christmas.domain.MenuCategory;
 import christmas.domain.amount.TotalOrderAmount;
 import christmas.domain.event.PresentEvent;
@@ -57,8 +57,7 @@ public class Order {
 	public String getOrderMenuList() {
 		StringBuilder sb = new StringBuilder();
 		for (Map.Entry<Menu, Integer> menu : menus.entrySet()) {
-			sb.append(String.format(ORDER_MENU_FORMAT.getMessage(), menu.getKey().getName(), menu.getValue()))
-				.append(NEW_LINE.getMessage());
+			sb.append(ResultMessage.getOrderMenuFormat(menu.getKey().getName(), menu.getValue())).append(NEW_LINE.getMessage());
 		}
 
 		return sb.toString();

@@ -1,5 +1,7 @@
 package christmas.config.message;
 
+import christmas.util.NumberFormatter;
+
 public enum ResultMessage {
 	ORDER_MENU("<주문 메뉴>"),
 	TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT("<할인 전 총주문 금액>"),
@@ -23,5 +25,17 @@ public enum ResultMessage {
 
 	public String getMessage() {
 		return message;
+	}
+
+	public static String getOrderMenuFormat(String menuName, int count) {
+		return String.format(ORDER_MENU_FORMAT.getMessage(), menuName, NumberFormatter.getNumberFormat(count));
+	}
+
+	public static String getBenefitFormat(String eventName, int discountAmount) {
+		return String.format(BENEFIT_FORMAT.getMessage(), eventName, NumberFormatter.getNumberFormat(discountAmount));
+	}
+
+	public static String getTotalBenefitFormat(int totalBenefitAmount) {
+		return String.format(TOTAL_BENEFIT_FORMAT.getMessage(), NumberFormatter.getNumberFormat(totalBenefitAmount));
 	}
 }

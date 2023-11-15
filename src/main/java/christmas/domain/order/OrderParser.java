@@ -24,7 +24,7 @@ public class OrderParser {
 		return menus;
 	}
 
-	private static Menu findMenu(MenuCategory menuCategory, String menuName) {
+	private Menu findMenu(MenuCategory menuCategory, String menuName) {
 		return menuCategory.getMenuCategory().stream()
 			.filter(menu -> menu.getName().equals(menuName))
 			.findFirst()

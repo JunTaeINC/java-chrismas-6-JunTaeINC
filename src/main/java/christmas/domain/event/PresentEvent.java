@@ -1,14 +1,12 @@
 package christmas.domain.event;
 
 import static christmas.config.Event.PRESENT_EVENT;
-import static christmas.config.message.ResultMessage.BENEFIT_FORMAT;
 import static christmas.config.message.ResultMessage.NEW_LINE;
 import static christmas.config.message.ResultMessage.NONE;
-import static christmas.config.message.ResultMessage.ORDER_MENU_FORMAT;
 
 import christmas.config.Present;
+import christmas.config.message.ResultMessage;
 import christmas.domain.amount.TotalOrderAmount;
-import christmas.util.NumberFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -45,14 +43,14 @@ public class PresentEvent {
 		}
 
 		for (Present present : presents) {
-			sb.append(String.format(ORDER_MENU_FORMAT.getMessage(), present.getMenu().getName(), present.getPresentCount())).append(NEW_LINE.getMessage());
+			sb.append(ResultMessage.getOrderMenuFormat(present.getMenu().getName(), present.getPresentCount())).append(NEW_LINE.getMessage());
 		}
 
 		return sb.toString().trim();
 	}
 
 	public String getPresentBenefitDetail() {
-		return String.format(BENEFIT_FORMAT.getMessage(), getEventName(), NumberFormatter.getNumberFormat(getTotalPresentAmount()));
+		return ResultMessage.getBenefitFormat(getEventName(), getTotalPresentAmount());
 	}
 
 	public boolean isApplicable() {

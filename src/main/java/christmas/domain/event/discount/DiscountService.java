@@ -1,14 +1,13 @@
 package christmas.domain.event.discount;
 
-import static christmas.config.message.ResultMessage.BENEFIT_FORMAT;
 import static christmas.config.message.ResultMessage.NEW_LINE;
 import static christmas.config.message.ResultMessage.NONE;
 import static christmas.domain.constant.DiscountConstant.MINIMUM_ORDER_AMOUNT;
 import static christmas.domain.constant.DiscountConstant.ZERO;
 
+import christmas.config.message.ResultMessage;
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
-import christmas.util.NumberFormatter;
 import java.util.stream.Collectors;
 
 public class DiscountService {
@@ -39,7 +38,7 @@ public class DiscountService {
 
 		return discountConfig.getDiscountPolicies().stream()
 			.filter(policy -> policy.isApplicable(order, visitDate))
-			.map(policy -> String.format(BENEFIT_FORMAT.getMessage(), policy.getEventName(), NumberFormatter.getNumberFormat(policy.getDiscountAmount(order, visitDate))))
+			.map(policy -> ResultMessage.getBenefitFormat(policy.getEventName(), policy.getDiscountAmount(order, visitDate)))
 			.collect(Collectors.joining(NEW_LINE.getMessage()));
 	}
 }
